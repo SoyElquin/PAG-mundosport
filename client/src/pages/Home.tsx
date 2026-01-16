@@ -17,15 +17,6 @@ export default function Home() {
   const [timeLeft, setTimeLeft] = useState({ days: 4, hours: 0, minutes: 0, seconds: 0 });
   const couponCode = "#REDES";
   const [scrollY, setScrollY] = useState(0);
-  const [promoIndex, setPromoIndex] = useState(0);
-
-  const ribbonImages = [
-    { src: "/images/colores-norma.png", alt: "Colores Norma" },
-    { src: "/images/cuadernos-norma.png", alt: "Cuadernos Norma" },
-    { src: "/images/lapiceros-norma.png", alt: "Lapiceros Norma" },
-    { src: "/images/morral.png", alt: "Morral" },
-    { src: "/images/plumones-norma.png", alt: "Plumones Norma" },
-  ];
 
   const testimonials = [
     {
@@ -80,14 +71,6 @@ export default function Home() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setPromoIndex((prev: number) => (prev + 1) % ribbonImages.length);
-    }, 1400);
-
-    return () => window.clearInterval(interval);
-  }, [ribbonImages.length]);
 
   const handleWhatsAppClick = () => {
     window.open("https://wa.me/573193747486?text=%C2%A1Hola!%F0%9F%98%89", "_blank");
@@ -197,74 +180,6 @@ export default function Home() {
               <span className="relative z-10">📍 Ver Tiendas</span>
               <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform relative z-10" />
             </button>
-          </div>
-        </div>
-      </section>
-
-      {/* PRODUCTOS ANIMADOS - Cinta de imágenes unidas */}
-      <section
-        className="w-full py-14 md:py-16 px-0 relative overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(135deg, #6D28D9 0%, #FF2E63 30%, #FFB703 65%, #00F5D4 100%)",
-        }}
-      >
-        <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-white/30 blur-3xl animate-pulse" />
-        <div className="absolute -bottom-28 -right-28 w-80 h-80 rounded-full bg-black/20 blur-3xl animate-pulse" />
-
-        <div className="container mx-auto text-center relative z-10 px-4 mb-8">
-          <h2
-            className="text-3xl md:text-4xl font-black text-white"
-            style={{ textShadow: "3px 3px 0px rgba(0,0,0,0.25)" }}
-          >
-            NUESTRAS PROMOCIONES
-          </h2>
-          <p className="text-white/95 font-bold mt-2">Solo por esta semana: ven y aprovecha</p>
-        </div>
-
-        <div className="relative z-10 px-4">
-          <div className="container mx-auto max-w-6xl">
-            <div className="relative mx-auto h-[320px] sm:h-[360px] md:h-[420px] max-w-[420px] sm:max-w-[520px]">
-              {ribbonImages.map((item, idx) => {
-                const total = ribbonImages.length;
-                const pos = (idx - promoIndex + total) % total;
-                const depth = Math.min(pos, 4);
-                const isFront = pos === 0;
-                const scale = 1 - depth * 0.05;
-                const x = depth * 10 * (depth % 2 === 0 ? 1 : -1);
-                const y = depth * 12;
-                const rot = depth * (depth % 2 === 0 ? -2.2 : 2.2);
-                const opacity = 1 - depth * 0.12;
-
-                return (
-                  <div
-                    key={item.src}
-                    className="absolute left-1/2 top-1/2 will-change-transform"
-                    style={{
-                      zIndex: total - depth,
-                      opacity,
-                      transform: `translate(-50%, -50%) translate(${x}px, ${y}px) rotate(${rot}deg) scale(${scale})`,
-                      transitionProperty: "transform, opacity",
-                      transitionDuration: "700ms",
-                      transitionTimingFunction: "cubic-bezier(0.2, 0.8, 0.2, 1)",
-                    }}
-                  >
-                    <div
-                      className={`rounded-[28px] bg-white/12 backdrop-blur-sm border border-white/25 shadow-2xl px-6 py-5 sm:px-8 sm:py-6 ${
-                        isFront ? "ring-2 ring-white/40" : ""
-                      }`}
-                    >
-                      <img
-                        src={item.src}
-                        alt={item.alt}
-                        className="h-40 sm:h-44 md:h-56 w-auto object-contain drop-shadow-2xl saturate-150 contrast-125"
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
           </div>
         </div>
       </section>
@@ -647,14 +562,19 @@ export default function Home() {
         </div>
       </footer>
 
-      <div className="fixed bottom-6 right-24 sm:right-28 z-50 pointer-events-none">
+      <button
+        onClick={() => document.getElementById("sedes")?.scrollIntoView({ behavior: "smooth" })}
+        className="fixed bottom-24 sm:bottom-28 right-6 z-50 bg-white/90 hover:bg-white rounded-full p-1.5 shadow-2xl ring-2 ring-white/80 transform hover:scale-110 transition-all animate-bounce"
+        aria-label="Ir a ubicaciones"
+        type="button"
+      >
         <img
           src="/images/logo.png"
           alt="Logo"
-          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover shadow-2xl ring-2 ring-white/80"
+          className="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover"
           loading="lazy"
         />
-      </div>
+      </button>
 
       {/* Floating WhatsApp Button */}
       <button
