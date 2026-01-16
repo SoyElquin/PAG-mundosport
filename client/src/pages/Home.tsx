@@ -480,7 +480,7 @@ export default function Home() {
                   <div className="bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl p-3 inline-flex">
                     <ShoppingBag className="w-7 h-7 text-white" />
                   </div>
-                  <p className="mt-4 font-black">Variedad total</p>
+                  <p className="mt-4 font-black">Gran variedad</p>
                   <p className="text-sm text-gray-300 font-semibold">Todo para la familia</p>
                 </div>
 
