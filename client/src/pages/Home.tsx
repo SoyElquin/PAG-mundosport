@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect, useCallback } from "react"
 import {
   MessageCircle,
@@ -178,8 +176,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-red-50 overflow-x-hidden">
       <div
-        className="fixed inset-0 bg-gradient-to-br from-yellow-100/20 via-orange-100/20 to-red-100/20 pointer-events-none"
-        style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+        className="fixed inset-0 bg-gradient-to-br from-yellow-100/20 via-orange-100/20 to-red-100/20 pointer-events-none scroll-parallax"
       />
 
       {/* FLOATING COUPON - Estilo Temu */}
@@ -201,6 +198,7 @@ export default function Home() {
               onClick={dismissFloatingCoupon}
               className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 bg-white rounded-full p-1.5 sm:p-2 shadow-lg z-10 hover:scale-110 transition-transform"
               type="button"
+              aria-label="Cerrar cupón"
             >
               <X className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
             </button>
@@ -435,7 +433,6 @@ export default function Home() {
                     title="Mapa Sede Cantaclaro"
                     src="https://www.google.com/maps?q=Calle%2027%20%2331-04%2C%20Monter%C3%ADa%2C%20C%C3%B3rdoba%2C%20Colombia&output=embed"
                     className="w-full h-48 sm:h-64 border-0"
-                    loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     allowFullScreen
                   />
@@ -488,7 +485,6 @@ export default function Home() {
                     title="Mapa Sede La Granja"
                     src="https://www.google.com/maps?q=Transversal%205%20%2311-15%2C%20Monter%C3%ADa%2C%20C%C3%B3rdoba%2C%20Colombia&output=embed"
                     className="w-full h-48 sm:h-64 border-0"
-                    loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     allowFullScreen
                   />
