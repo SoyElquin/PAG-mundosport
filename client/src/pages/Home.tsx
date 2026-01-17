@@ -242,7 +242,7 @@ export default function Home() {
 
               {/* CTA */}
               <button
-                onClick={handleFloatingCouponClick}
+                onClick={handleCouponRedeemClick}
                 className="w-full bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg sm:rounded-xl transform hover:scale-[1.02] transition-all flex items-center justify-center gap-2 shadow-lg text-sm sm:text-base"
                 type="button"
               >
