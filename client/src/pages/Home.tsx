@@ -213,10 +213,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-950 via-orange-900 to-red-900 overflow-x-hidden">
-      <div
-        className="fixed inset-0 bg-gradient-to-br from-red-900/30 via-orange-800/30 to-red-900/30 pointer-events-none scroll-parallax"
-      />
+    <div className="min-h-screen bg-white overflow-x-hidden">
 
       {/* FLOATING COUPON - Estilo Temu */}
       {showFloatingCoupon && (
@@ -317,14 +314,7 @@ export default function Home() {
 
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            <p className="text-base sm:text-lg md:text-2xl lg:text-3xl text-white font-bold mb-2 sm:mb-3 drop-shadow-lg">
-              ⚽ ARTÍCULOS DEPORTIVOS DE CALIDAD ⚽
-            </p>
-            <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-orange-100 font-semibold drop-shadow-md">
-              Todo lo que necesitas para tu deporte favorito
-            </p>
-          </div>
+
 
           <div className="max-w-3xl mx-auto">
             <div className="bg-white/95 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-8 shadow-2xl border-2 sm:border-4 border-white/50">
@@ -733,11 +723,11 @@ export default function Home() {
       {/* Floating WhatsApp Button */}
       <button
         onClick={handleWhatsAppClick}
-        className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 bg-green-500 hover:bg-green-600 text-white p-2.5 sm:p-3 md:p-4 rounded-full shadow-2xl transform hover:scale-110 sm:hover:scale-125 transition-all animate-bounce z-50"
+        className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-0 w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center shadow-2xl transform hover:scale-110 transition-all z-50 overflow-hidden"
         aria-label="Contactar por WhatsApp"
         type="button"
       >
-        <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+        <MessageCircle className="w-8 h-8 sm:w-10 sm:h-10 fill-current" />
       </button>
     </div>
   )
