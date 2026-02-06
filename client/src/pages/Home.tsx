@@ -482,26 +482,16 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="bg-green-100 p-2 sm:p-3 rounded-lg sm:rounded-xl flex-shrink-0">
-                      <MessageCircle className="w-5 h-5 sm:w-7 sm:h-7 text-green-600" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-gray-900 text-sm sm:text-base">WhatsApp</p>
-                      <p className="text-gray-600 text-sm sm:text-base">+57 312 286 8911</p>
-                    </div>
-                  </div>
+                  <button
+                    onClick={handleMapClick}
+                    className="w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white py-3 sm:py-3.5 md:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-lg flex items-center justify-center gap-2 transition-all shadow-xl transform hover:scale-[1.02]"
+                    type="button"
+                  >
+                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
+                    <span className="whitespace-nowrap">Ver en Google Maps</span>
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                  </button>
                 </div>
-
-                <button
-                  onClick={handleMapClick}
-                  className="w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white py-3 sm:py-3.5 md:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-lg flex items-center justify-center gap-2 transition-all shadow-xl transform hover:scale-[1.02]"
-                  type="button"
-                >
-                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
-                  <span className="whitespace-nowrap">Cómo llegar</span>
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-                </button>
               </div>
             </div>
           </div>
@@ -654,7 +644,7 @@ export default function Home() {
                 <div
                   className="marqueeTrack"
                   style={{
-                    ["--marquee-duration" as never]: "22s",
+                    ["--marquee-duration" as never]: "12s",
                   }}
                 >
                   {testimonialsRibbon.map((t, idx) => (
