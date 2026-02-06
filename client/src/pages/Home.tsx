@@ -365,12 +365,12 @@ export default function Home() {
 
                   <button
                     onClick={handleViewStoresClick}
-                    className="group relative w-full sm:w-auto justify-center bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-5 sm:px-6 md:px-10 py-3 sm:py-3.5 md:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                    className="group relative w-full sm:w-auto justify-center bg-gradient-to-r from-blue-700 to-purple-800 hover:from-blue-800 hover:to-purple-900 text-white px-5 sm:px-6 md:px-10 py-3 sm:py-3.5 md:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
                     type="button"
                   >
                     <div className="absolute inset-0 bg-white/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                     <MapPin className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative z-10 flex-shrink-0" />
-                    <span className="relative z-10 whitespace-nowrap">📍 Ver Ubicación</span>
+                    <span className="relative z-10 whitespace-nowrap">Ver ubicación</span>
                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform relative z-10 flex-shrink-0" />
                   </button>
                 </div>
@@ -493,12 +493,12 @@ export default function Home() {
 
           <section className="w-full py-8 sm:py-12 bg-white">
             <div className="container mx-auto max-w-5xl px-4">
-              <div className="bg-gradient-to-r from-red-900 to-red-800 rounded-[2rem] shadow-2xl shadow-red-900/20 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-red-700/50">
+              <div className="bg-gradient-to-r from-blue-700 to-purple-800 rounded-[2rem] shadow-2xl shadow-purple-900/40 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-white/10">
                 <div className="text-center md:text-left space-y-1">
                   <h2 className="text-2xl sm:text-3xl font-black text-white">
                     ¡Únete a nuestra comunidad! 🚀
                   </h2>
-                  <p className="text-red-100 font-medium">
+                  <p className="text-purple-200 font-medium">
                     Síguenos y no te pierdas ninguna oferta
                   </p>
                 </div>
@@ -513,11 +513,11 @@ export default function Home() {
                     className="group flex flex-col items-center gap-1"
                   >
                     <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-tr from-purple-500 via-pink-500 to-orange-500 p-[2px] rounded-full hover:scale-110 transition-transform shadow-md">
-                      <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
+                      <div className="w-full h-full bg-slate-900/80 rounded-full flex items-center justify-center backdrop-blur-sm">
                         <img src="/icons/instagram.svg" alt="Instagram" className="w-6 h-6 sm:w-7 sm:h-7" />
                       </div>
                     </div>
-                    <span className="text-[10px] sm:text-xs font-bold text-red-200 group-hover:text-pink-400 transition-colors">Instagram</span>
+                    <span className="text-[10px] sm:text-xs font-bold text-purple-200 group-hover:text-pink-400 transition-colors">Instagram</span>
                   </a>
 
                   {/* TikTok */}
@@ -528,12 +528,12 @@ export default function Home() {
                     onClick={() => handleSocialClick("tiktok")}
                     className="group flex flex-col items-center gap-1"
                   >
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white p-[2px] rounded-full hover:scale-110 transition-transform shadow-md">
-                      <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-tr from-[#69C9D0] to-[#EE1D52] p-[2px] rounded-full hover:scale-110 transition-transform shadow-md">
+                      <div className="w-full h-full bg-slate-900/80 rounded-full flex items-center justify-center backdrop-blur-sm">
                         <img src="/icons/tiktok.svg" alt="TikTok" className="w-6 h-6 sm:w-7 sm:h-7" />
                       </div>
                     </div>
-                    <span className="text-[10px] sm:text-xs font-bold text-red-200 group-hover:text-white transition-colors">TikTok</span>
+                    <span className="text-[10px] sm:text-xs font-bold text-purple-200 group-hover:text-white transition-colors">TikTok</span>
                   </a>
 
                   {/* Facebook */}
@@ -545,11 +545,11 @@ export default function Home() {
                     className="group flex flex-col items-center gap-1"
                   >
                     <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-600 p-[2px] rounded-full hover:scale-110 transition-transform shadow-md">
-                      <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
+                      <div className="w-full h-full bg-slate-900/80 rounded-full flex items-center justify-center backdrop-blur-sm">
                         <img src="/icons/facebook.svg" alt="Facebook" className="w-6 h-6 sm:w-7 sm:h-7" />
                       </div>
                     </div>
-                    <span className="text-[10px] sm:text-xs font-bold text-red-200 group-hover:text-blue-400 transition-colors">Facebook</span>
+                    <span className="text-[10px] sm:text-xs font-bold text-purple-200 group-hover:text-blue-400 transition-colors">Facebook</span>
                   </a>
                 </div>
               </div>
