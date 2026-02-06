@@ -216,19 +216,21 @@ export default function Home() {
 
     const handleMouseLeave = (e: MouseEvent) => {
       // Si el mouse sale por arriba de la página (intento de cerrar pestaña/ir a URL)
-      if (e.clientY <= 0 && !showFloatingCoupon && hasScrolledRef.current) {
+      // Eliminamos hasScrolledRef para que se dispare siempre que intente salir
+      if (e.clientY <= 0 && !showFloatingCoupon) {
         setShowExitPopup(true)
         trackFbEvent("ExitIntent", { content_name: "exit_popup_shown" })
       }
     }
 
-    // Detectar intento de retroceso (beforeunload)
+    // Detectar intento de retroceso o recarga (beforeunload)
     const handleBeforeUnload = (e: BeforeUnloadEvent) => {
-      if (!exitPopupDismissed && hasScrolledRef.current) {
+      if (!exitPopupDismissed) {
         e.preventDefault()
-        e.returnValue = ''
+        e.returnValue = '' // Requerido por Chrome
         setShowExitPopup(true)
         trackFbEvent("ExitIntent", { content_name: "exit_popup_beforeunload" })
+        return ''
       }
     }
 
