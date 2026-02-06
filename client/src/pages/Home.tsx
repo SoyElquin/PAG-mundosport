@@ -306,139 +306,137 @@ export default function Home() {
         <div className="relative container mx-auto px-3 sm:px-4 py-8 sm:py-12 md:py-20 text-center space-y-4 sm:space-y-6 md:space-y-8">
           <div className="transform hover:scale-105 transition-transform duration-300">
             <div className="inline-block bg-white px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-4 rounded-2xl sm:rounded-3xl shadow-2xl mb-3 sm:mb-4">
-              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-red-700 via-orange-600 to-red-700 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-black bg-gradient-to-r from-red-700 via-orange-600 to-red-700 bg-clip-text text-transparent leading-tight">
                 MUNDO DE TODO SPORT
               </h1>
             </div>
-            <div className="animate-pulse">
-              <p className="text-lg sm:text-xl md:text-3xl font-black text-white drop-shadow-lg tracking-tight">
+
+            <div className="mt-4 sm:mt-6">
+              <p className="text-xl sm:text-2xl md:text-4xl font-black text-white drop-shadow-lg animate-pulse">
                 🎒 TEMPORADA ESCOLAR 2026 🎒
               </p>
             </div>
           </div>
 
 
-        </div>
 
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-white/95 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-8 shadow-2xl border-2 sm:border-4 border-white/50">
+              <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-4 sm:mb-5 md:mb-6">
+                <Zap className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-red-600 animate-bounce" />
+                <p className="text-red-700 font-black text-base sm:text-lg md:text-2xl">¡OFERTA TERMINA EN!</p>
+                <Zap className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-red-600 animate-bounce" />
+              </div>
 
-
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-white/95 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-8 shadow-2xl border-2 sm:border-4 border-white/50">
-            <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-4 sm:mb-5 md:mb-6">
-              <Zap className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-red-600 animate-bounce" />
-              <p className="text-red-700 font-black text-base sm:text-lg md:text-2xl">¡OFERTA TERMINA EN!</p>
-              <Zap className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-red-600 animate-bounce" />
-            </div>
-
-            <div className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4">
-              {[
-                { label: "Días", value: timeLeft.days },
-                { label: "Horas", value: timeLeft.hours },
-                { label: "Min", value: timeLeft.minutes },
-                { label: "Seg", value: timeLeft.seconds },
-              ].map((item, index) => (
-                <div key={index} className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-600 to-orange-600 rounded-xl sm:rounded-2xl blur opacity-75" />
-                  <div className="relative bg-gradient-to-br from-red-600 to-orange-600 rounded-xl sm:rounded-2xl p-2 sm:p-3 md:p-6 transform hover:scale-105 transition-all duration-300 shadow-xl">
-                    <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-black text-white mb-0.5 sm:mb-1">
-                      {String(item.value).padStart(2, "0")}
-                    </div>
-                    <div className="text-[10px] sm:text-xs md:text-base text-white font-bold opacity-90">
-                      {item.label}
+              <div className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+                {[
+                  { label: "Días", value: timeLeft.days },
+                  { label: "Horas", value: timeLeft.hours },
+                  { label: "Min", value: timeLeft.minutes },
+                  { label: "Seg", value: timeLeft.seconds },
+                ].map((item, index) => (
+                  <div key={index} className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-600 to-orange-600 rounded-xl sm:rounded-2xl blur opacity-75" />
+                    <div className="relative bg-gradient-to-br from-red-600 to-orange-600 rounded-xl sm:rounded-2xl p-2 sm:p-3 md:p-6 transform hover:scale-105 transition-all duration-300 shadow-xl">
+                      <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-black text-white mb-0.5 sm:mb-1">
+                        {String(item.value).padStart(2, "0")}
+                      </div>
+                      <div className="text-[10px] sm:text-xs md:text-base text-white font-bold opacity-90">
+                        {item.label}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
 
-            <div className="mt-4 sm:mt-6 text-gray-600 text-xs sm:text-sm font-semibold">
-              ⚡ ¡No dejes pasar esta oportunidad!
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center pt-2 max-w-md sm:max-w-none mx-auto px-2">
-          <button
-            onClick={handleWhatsAppClick}
-            className="group relative w-full sm:w-auto justify-center bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-5 sm:px-6 md:px-10 py-3 sm:py-3.5 md:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
-            type="button"
-          >
-            <div className="absolute inset-0 bg-white/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-            <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative z-10 flex-shrink-0" />
-            <span className="relative z-10 whitespace-nowrap">Escribir ahora</span>
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform relative z-10 flex-shrink-0" />
-          </button>
-
-          <button
-            onClick={handleViewStoresClick}
-            className="group relative w-full sm:w-auto justify-center bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white px-5 sm:px-6 md:px-10 py-3 sm:py-3.5 md:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
-            type="button"
-          >
-            <div className="absolute inset-0 bg-white/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-            <MapPin className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative z-10 flex-shrink-0" />
-            <span className="relative z-10 whitespace-nowrap">📍 Ver Ubicación</span>
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform relative z-10 flex-shrink-0" />
-          </button>
-        </div>
-    </div>
-      </section >
-
-    {/* CUPÓN SECTION */ }
-    < section id = "cupon-section" className = "relative max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-10 sm:py-14 md:py-16" >
-      <div className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.2),transparent_70%)]" />
-
-        <div className="relative p-4 sm:p-6 md:p-10">
-          <div className="text-center space-y-4 sm:space-y-6">
-            <div className="flex justify-center">
-              <div className="relative">
-                <div className="absolute inset-0 animate-ping">
-                  <Gift className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white opacity-75" />
-                </div>
-                <Gift className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white relative z-10" />
+              <div className="mt-4 sm:mt-6 text-gray-600 text-xs sm:text-sm font-semibold">
+                ⚡ ¡No dejes pasar esta oportunidad!
               </div>
             </div>
+          </div>
 
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white drop-shadow-lg">
-              Cupón exclusivo
-            </h2>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center pt-2 max-w-md sm:max-w-none mx-auto px-2">
+            <button
+              onClick={handleWhatsAppClick}
+              className="group relative w-full sm:w-auto justify-center bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-5 sm:px-6 md:px-10 py-3 sm:py-3.5 md:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              type="button"
+            >
+              <div className="absolute inset-0 bg-white/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative z-10 flex-shrink-0" />
+              <span className="relative z-10 whitespace-nowrap">Escribir ahora</span>
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform relative z-10 flex-shrink-0" />
+            </button>
 
-            <div className="max-w-2xl mx-auto">
-              <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl transform hover:scale-[1.02] transition-transform">
-                <p className="text-gray-700 font-bold text-sm sm:text-base md:text-lg mb-3 sm:mb-4">
-                  Menciona este código en caja
-                </p>
+            <button
+              onClick={handleViewStoresClick}
+              className="group relative w-full sm:w-auto justify-center bg-gradient-to-r from-orange-400 to-red-600 hover:from-orange-500 hover:to-red-700 text-white px-5 sm:px-6 md:px-10 py-3 sm:py-3.5 md:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              type="button"
+            >
+              <div className="absolute inset-0 bg-white/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <MapPin className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative z-10 flex-shrink-0" />
+              <span className="relative z-10 whitespace-nowrap">📍 Ver Ubicación</span>
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform relative z-10 flex-shrink-0" />
+            </button>
+          </div>
+        </div>
+      </section>
 
-                <div className="relative mb-4 sm:mb-6">
-                  <div className="absolute inset-0 bg-gradient-to-r from-red-300 to-orange-300 rounded-xl sm:rounded-2xl blur-xl" />
-                  <div className="relative w-full bg-gradient-to-r from-red-100 to-orange-100 border-3 sm:border-4 border-dashed border-red-600 rounded-xl sm:rounded-2xl p-4 sm:p-6">
-                    <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-red-700 to-orange-600 bg-clip-text text-transparent tracking-widest">
-                      {couponCode}
+      {/* CUPÓN SECTION */}
+      <section id="cupon-section" className="relative max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-10 sm:py-14 md:py-16">
+        <div className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.2),transparent_70%)]" />
+
+          <div className="relative p-4 sm:p-6 md:p-10">
+            <div className="text-center space-y-4 sm:space-y-6">
+              <div className="flex justify-center">
+                <div className="relative">
+                  <div className="absolute inset-0 animate-ping">
+                    <Gift className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white opacity-75" />
+                  </div>
+                  <Gift className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white relative z-10" />
+                </div>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white drop-shadow-lg">
+                Cupón exclusivo
+              </h2>
+
+              <div className="max-w-2xl mx-auto">
+                <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl transform hover:scale-[1.02] transition-transform">
+                  <p className="text-gray-700 font-bold text-sm sm:text-base md:text-lg mb-3 sm:mb-4">
+                    Menciona este código en caja
+                  </p>
+
+                  <div className="relative mb-4 sm:mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-300 to-orange-300 rounded-xl sm:rounded-2xl blur-xl" />
+                    <div className="relative w-full bg-gradient-to-r from-red-100 to-orange-100 border-3 sm:border-4 border-dashed border-red-600 rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                      <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-red-700 to-orange-600 bg-clip-text text-transparent tracking-widest">
+                        {couponCode}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="bg-green-50 border-2 border-green-500 rounded-lg sm:rounded-xl p-3 sm:p-4">
+                    <p className="text-green-700 font-bold text-base sm:text-lg md:text-xl flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap">
+                      <Trophy className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
+                      <span>¡DESCUENTO ESPECIAL INSTANTÁNEO!</span>
                     </p>
                   </div>
-                </div>
 
-                <div className="bg-green-50 border-2 border-green-500 rounded-lg sm:rounded-xl p-3 sm:p-4">
-                  <p className="text-green-700 font-bold text-base sm:text-lg md:text-xl flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap">
-                    <Trophy className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
-                    <span>¡DESCUENTO ESPECIAL INSTANTÁNEO!</span>
-                  </p>
+                  <button
+                    onClick={handleCouponRedeemClick}
+                    className="mt-4 sm:mt-6 w-full bg-black hover:bg-gray-900 text-white font-black py-2.5 sm:py-3 px-4 sm:px-6 rounded-xl sm:rounded-2xl transform hover:scale-[1.02] transition-all flex items-center justify-center gap-2 mx-auto text-sm sm:text-base md:text-lg"
+                    type="button"
+                  >
+                    <span>Redimir ahora</span>
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </button>
                 </div>
-
-                <button
-                  onClick={handleCouponRedeemClick}
-                  className="mt-4 sm:mt-6 w-full bg-black hover:bg-gray-900 text-white font-black py-2.5 sm:py-3 px-4 sm:px-6 rounded-xl sm:rounded-2xl transform hover:scale-[1.02] transition-all flex items-center justify-center gap-2 mx-auto text-sm sm:text-base md:text-lg"
-                  type="button"
-                >
-                  <span>Redimir ahora</span>
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                </button>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      </section >
+      </section>
 
       <section id="comollegar" className="w-full py-10 sm:py-12 px-3 sm:px-4 bg-gray-50">
         <div className="container mx-auto">
@@ -598,7 +596,7 @@ export default function Home() {
         </div>
       </section>
 
-  {/* FOOTER */ }
+      {/* FOOTER */}
       <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-10 sm:py-16 mt-6 sm:mt-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.06),transparent_70%)]" />
 
@@ -704,27 +702,27 @@ export default function Home() {
 
       <button
         onClick={handleViewStoresClick}
-        className="fixed bottom-20 sm:bottom-24 md:bottom-28 right-4 sm:right-6 z-50 bg-white/90 hover:bg-white rounded-full p-1 sm:p-1.5 shadow-2xl ring-2 ring-white/80 transform hover:scale-110 transition-all animate-bounce flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16"
+        className="fixed bottom-20 sm:bottom-24 md:bottom-28 right-4 sm:right-6 z-50 bg-white/90 hover:bg-white rounded-full p-1 sm:p-1.5 shadow-2xl ring-2 ring-white/80 transform hover:scale-110 transition-all animate-bounce"
         aria-label="Ir a ubicación"
         type="button"
       >
         <img
           src="/images/logo.png"
           alt="Logo"
-          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover"
+          className="w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full object-cover"
           loading="lazy"
         />
       </button>
 
-  {/* Floating WhatsApp Button */ }
-  <button
-    onClick={handleWhatsAppClick}
-    className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-0 w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center shadow-2xl transform hover:scale-110 transition-all z-50 overflow-hidden animate-bounce"
-    aria-label="Contactar por WhatsApp"
-    type="button"
-  >
-    <MessageCircle className="w-8 h-8 sm:w-10 sm:h-10 fill-current" />
-  </button>
-    </div >
+      {/* Floating WhatsApp Button */}
+      <button
+        onClick={handleWhatsAppClick}
+        className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-0 w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center shadow-2xl transform hover:scale-110 transition-all z-50 overflow-hidden"
+        aria-label="Contactar por WhatsApp"
+        type="button"
+      >
+        <MessageCircle className="w-8 h-8 sm:w-10 sm:h-10 fill-current" />
+      </button>
+    </div>
   )
 }
