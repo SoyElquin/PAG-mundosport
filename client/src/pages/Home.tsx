@@ -52,6 +52,8 @@ export default function Home() {
   const [exitPopupDismissed, setExitPopupDismissed] = useState(false)
   const mouseYRef = useRef(0)
   const hasScrolledRef = useRef(false)
+  const [loadMap, setLoadMap] = useState(false)
+  const comollegarRef = useRef<HTMLElement | null>(null)
 
   // TESTIMONIOS DE MUNDO DE TODO SPORT
   const testimonials = [
@@ -131,6 +133,19 @@ export default function Home() {
     }
   }, [])
 
+  // Observer para cargar el iframe del mapa solo cuando la sección está cerca
+  useEffect(() => {
+    if (!comollegarRef.current) return
+    if (loadMap) return
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setLoadMap(true)
+      })
+    }, { rootMargin: '200px' })
+    obs.observe(comollegarRef.current)
+    return () => obs.disconnect()
+  }, [comollegarRef, loadMap])
+
   // Efecto para mostrar el cupón flotante después de 10 segundos
   useEffect(() => {
     if (couponDismissed) return
@@ -178,6 +193,7 @@ export default function Home() {
 
   const handleViewStoresClick = useCallback(() => {
     trackFbEvent("ViewContent", { content_name: "view_stores" })
+    setLoadMap(true)
     document.getElementById("comollegar")?.scrollIntoView({ behavior: "smooth" })
   }, [])
 
@@ -572,13 +588,28 @@ export default function Home() {
               </div>
               <div className="p-4 sm:p-6">
                 <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-gray-100 mb-4 sm:mb-6">
-                  <iframe
-                    title="Mapa Mundo de Todo Sport"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15774.096421085911!2d-75.91162852761718!3d8.736656453826122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e5a3149bdf3320f%3A0x81db1251c71627ab!2sMundo%20de%20Todo%20Sport!5e0!3m2!1ses-419!2sco!4v1770391755052!5m2!1ses-419!2sco"
-                    className="w-full h-64 sm:h-80 border-0"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    allowFullScreen
-                  />
+                  <div ref={(el) => (comollegarRef.current = el as HTMLElement)}>
+                    {loadMap ? (
+                      <iframe
+                        title="Mapa Mundo de Todo Sport"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15774.096421085911!2d-75.91162852761718!3d8.736656453826122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e5a3149bdf3320f%3A0x81db1251c71627ab!2sMundo%20de%20Todo%20Sport!5e0!3m2!1ses-419!2sco!4v1770391755052!5m2!1ses-419!2sco"
+                        className="w-full h-64 sm:h-80 border-0"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        loading="lazy"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <div className="w-full h-64 sm:h-80 bg-gray-100 flex items-center justify-center text-center p-4">
+                        <div>
+                          <p className="font-bold text-gray-700 mb-2">Mapa (cargado bajo demanda)</p>
+                          <p className="text-xs text-gray-500 mb-3">Pulsa para cargar el mapa y ahorrar datos en la primera vista.</p>
+                          <div className="flex items-center justify-center">
+                            <button onClick={() => setLoadMap(true)} className="px-4 py-2 bg-red-600 text-white rounded-lg">Cargar mapa</button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <div className="space-y-4 sm:space-y-5 mb-4 sm:mb-6">
@@ -643,7 +674,7 @@ export default function Home() {
               >
                 <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-tr from-purple-500 via-pink-500 to-orange-500 p-[2px] rounded-full hover:scale-110 transition-transform shadow-md">
                   <div className="w-full h-full bg-slate-900/80 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <img src="/icons/instagram.svg" alt="Instagram" className="w-6 h-6 sm:w-7 sm:h-7" />
+                    <img loading="lazy" src="/icons/instagram.svg" alt="Instagram" className="w-6 h-6 sm:w-7 sm:h-7" />
                   </div>
                 </div>
                 <span className="text-[10px] sm:text-xs font-bold text-purple-200 group-hover:text-pink-400 transition-colors">Instagram</span>
@@ -659,7 +690,7 @@ export default function Home() {
               >
                 <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-tr from-[#69C9D0] to-[#EE1D52] p-[2px] rounded-full hover:scale-110 transition-transform shadow-md">
                   <div className="w-full h-full bg-slate-900/80 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <img src="/icons/tiktok.svg" alt="TikTok" className="w-6 h-6 sm:w-7 sm:h-7" />
+                    <img loading="lazy" src="/icons/tiktok.svg" alt="TikTok" className="w-6 h-6 sm:w-7 sm:h-7" />
                   </div>
                 </div>
                 <span className="text-[10px] sm:text-xs font-bold text-purple-200 group-hover:text-white transition-colors">TikTok</span>
@@ -675,7 +706,7 @@ export default function Home() {
               >
                 <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-600 p-[2px] rounded-full hover:scale-110 transition-transform shadow-md">
                   <div className="w-full h-full bg-slate-900/80 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <img src="/icons/facebook.svg" alt="Facebook" className="w-6 h-6 sm:w-7 sm:h-7" />
+                    <img loading="lazy" src="/icons/facebook.svg" alt="Facebook" className="w-6 h-6 sm:w-7 sm:h-7" />
                   </div>
                 </div>
                 <span className="text-[10px] sm:text-xs font-bold text-purple-200 group-hover:text-blue-400 transition-colors">Facebook</span>

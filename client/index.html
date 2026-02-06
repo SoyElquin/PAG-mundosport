@@ -44,8 +44,8 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
 
   <!-- Structured Data (JSON-LD) - Advanced SEO -->
   <script type="application/ld+json">
@@ -92,29 +92,34 @@
     }
   </script>
 
-  <!-- Facebook Pixel Code -->
-  <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'TU_PIXEL_ID'); // Reemplazar con ID real
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=TU_PIXEL_ID&ev=PageView&noscript=1" />
-  </noscript>
+  <!-- Facebook Pixel: cargado de forma diferida para no bloquear LCP -->
+  <!-- El script se cargará tras idle o un pequeño timeout; reemplazar TU_PIXEL_ID por el real -->
 </head>
 
 <body>
   <div id="root"></div>
+
+  <!-- Deferred Facebook Pixel loader (no bloqueante) -->
+  <script>
+    (function () {
+      try {
+        var PIXEL_ID = 'TU_PIXEL_ID';
+        if (!PIXEL_ID || PIXEL_ID === 'TU_PIXEL_ID') return;
+        function loadPixel() {
+          !(function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+          })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', PIXEL_ID);
+          fbq('track', 'PageView');
+        }
+        if ('requestIdleCallback' in window) requestIdleCallback(function () { setTimeout(loadPixel, 200); });
+        else setTimeout(loadPixel, 1000);
+      } catch (e) { }
+    })();
+  </script>
+
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
