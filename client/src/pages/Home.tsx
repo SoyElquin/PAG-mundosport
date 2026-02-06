@@ -167,20 +167,6 @@ export default function Home() {
     }
   }, [couponDismissed, showFloatingCoupon])
 
-  // Timer para mostrar cupón a los 10 segundos
-  useEffect(() => {
-    if (couponDismissed) return
-
-    const timer = setTimeout(() => {
-      if (!showFloatingCoupon) {
-        setShowFloatingCoupon(true)
-        trackFbEvent("ViewContent", { content_name: "timer_coupon_10s" })
-      }
-    }, 10000)
-
-    return () => clearTimeout(timer)
-  }, [couponDismissed, showFloatingCoupon])
-
   const handleWhatsAppClick = useCallback(() => {
     trackFbEvent("Contact", { content_name: "whatsapp_main" })
     window.open("https://wa.me/573122868911?text=%C2%A1Hola!%F0%9F%98%89", "_blank")
@@ -282,20 +268,24 @@ export default function Home() {
                 </div>
               </div>
 
-
+              {/* Urgencia */}
+              <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-3 sm:mb-4 text-orange-700">
+                <Clock className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse" />
+                <p className="text-[10px] sm:text-xs font-bold">Válido solo por tiempo limitado</p>
+              </div>
 
               {/* CTA */}
               <button
                 onClick={handleCouponRedeemClick}
-                className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-xl sm:rounded-2xl transform hover:scale-[1.02] transition-all flex items-center justify-center gap-2 shadow-lg text-sm sm:text-base animate-pulse"
+                className="w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg sm:rounded-xl transform hover:scale-[1.02] transition-all flex items-center justify-center gap-2 shadow-lg text-sm sm:text-base"
                 type="button"
               >
-                <Gift className="w-5 h-5 sm:w-6 sm:h-6" />
+                <Gift className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>¡Quiero mi descuento!</span>
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
               </button>
 
-              <p className="text-[10px] sm:text-xs text-gray-400 mt-3">
+              <p className="text-[9px] sm:text-[10px] text-gray-400 mt-2 sm:mt-3">
                 Menciona el código en caja para aplicar
               </p>
             </div>
@@ -323,10 +313,51 @@ export default function Home() {
 
           </div>
 
-          <div className="animate-pulse">
-            <span className="inline-block bg-yellow-400 text-red-900 font-black text-xl sm:text-2xl md:text-4xl px-4 py-2 rounded-full transform -rotate-1 shadow-xl border-4 border-red-600">
+          {/* Temporada Escolar Badge */}
+          <div className="mb-8">
+            <span className="inline-block py-2 px-6 rounded-full bg-red-100 text-red-700 text-lg sm:text-xl md:text-2xl font-black tracking-wider shadow-sm animate-pulse">
               🎒 TEMPORADA ESCOLAR 2026 🎒
             </span>
+          </div>
+
+          {/* Redes Sociales Minimalistas */}
+          {/* Redes Sociales Minimalistas */}
+          <div className="flex justify-center gap-6 sm:gap-8 mb-8">
+            <button
+              onClick={() => {
+                handleSocialClick("instagram");
+                window.open("https://www.instagram.com/mundodetodosport/", "_blank");
+              }}
+              className="group transform hover:scale-110 transition-transform"
+            >
+              <div className="bg-gradient-to-tr from-purple-500 to-pink-500 p-3 rounded-full shadow-lg group-hover:shadow-xl">
+                <img src="/icons/instagram.svg" alt="Instagram" className="w-6 h-6 sm:w-8 sm:h-8 text-white filter invert brightness-0" />
+              </div>
+            </button>
+
+            <button
+              onClick={() => {
+                handleSocialClick("tiktok");
+                window.open("https://www.tiktok.com/@mundodetodo.sport", "_blank");
+              }}
+              className="group transform hover:scale-110 transition-transform"
+            >
+              <div className="bg-black p-3 rounded-full shadow-lg group-hover:shadow-xl">
+                <img src="/icons/tiktok.svg" alt="TikTok" className="w-6 h-6 sm:w-8 sm:h-8 text-white filter invert brightness-0" />
+              </div>
+            </button>
+
+            <button
+              onClick={() => {
+                handleSocialClick("facebook");
+                window.open("https://www.facebook.com/mundodetodosport/", "_blank");
+              }}
+              className="group transform hover:scale-110 transition-transform"
+            >
+              <div className="bg-blue-600 p-3 rounded-full shadow-lg group-hover:shadow-xl">
+                <img src="/icons/facebook.svg" alt="Facebook" className="w-6 h-6 sm:w-8 sm:h-8 text-white filter invert brightness-0" />
+              </div>
+            </button>
           </div>
 
 
@@ -380,10 +411,10 @@ export default function Home() {
 
             <button
               onClick={handleViewStoresClick}
-              className="group relative w-full sm:w-auto justify-center bg-gray-900 hover:bg-black text-white px-5 sm:px-6 md:px-10 py-3 sm:py-3.5 md:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              className="group relative w-full sm:w-auto justify-center bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-5 sm:px-6 md:px-10 py-3 sm:py-3.5 md:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
               type="button"
             >
-              <div className="absolute inset-0 bg-white/10 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-white/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <MapPin className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative z-10 flex-shrink-0" />
               <span className="relative z-10 whitespace-nowrap">📍 Ver Ubicación</span>
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform relative z-10 flex-shrink-0" />
@@ -427,15 +458,13 @@ export default function Home() {
                     </div>
                   </div>
 
-
-
                   <button
                     onClick={handleCouponRedeemClick}
-                    className="mt-4 sm:mt-6 w-full bg-green-600 hover:bg-green-700 text-white font-black py-3 sm:py-4 px-4 sm:px-6 rounded-xl sm:rounded-2xl transform hover:scale-[1.02] transition-all flex items-center justify-center gap-2 mx-auto text-sm sm:text-base md:text-lg animate-pulse shadow-xl"
+                    className="mt-6 w-full bg-green-600 hover:bg-green-700 text-white font-black py-3 px-6 rounded-2xl transform hover:scale-[1.02] transition-all flex items-center justify-center gap-2 mx-auto text-lg shadow-xl"
                     type="button"
                   >
                     <span>Redimir ahora</span>
-                    <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <ArrowRight className="w-5 h-5" />
                   </button>
                 </div>
               </div>
@@ -508,60 +537,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full py-10 sm:py-14 px-3 sm:px-4 bg-gray-50 border-y border-gray-200">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-xl sm:text-2xl font-black text-gray-900 mb-6 sm:mb-8">
-            📱 ¡Síguenos en Redes Sociales!
-          </h2>
 
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
-            <a
-              href="https://www.instagram.com/mundodetodosport/"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => handleSocialClick("instagram")}
-              className="group flex flex-col items-center gap-2 min-w-[100px]"
-            >
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 p-1 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
-                  <img src="/icons/instagram.svg" alt="Instagram" className="w-8 h-8 sm:w-10 sm:h-10" />
-                </div>
-              </div>
-              <span className="font-bold text-gray-700 text-sm">Instagram</span>
-            </a>
-
-            <a
-              href="https://www.tiktok.com/@mundodetodo.sport"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => handleSocialClick("tiktok")}
-              className="group flex flex-col items-center gap-2 min-w-[100px]"
-            >
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-black p-1 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
-                  <img src="/icons/tiktok.svg" alt="TikTok" className="w-8 h-8 sm:w-10 sm:h-10" />
-                </div>
-              </div>
-              <span className="font-bold text-gray-700 text-sm">TikTok</span>
-            </a>
-
-            <a
-              href="https://www.facebook.com/mundodetodosport/"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => handleSocialClick("facebook")}
-              className="group flex flex-col items-center gap-2 min-w-[100px]"
-            >
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-blue-600 p-1 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
-                  <img src="/icons/facebook.svg" alt="Facebook" className="w-8 h-8 sm:w-10 sm:h-10" />
-                </div>
-              </div>
-              <span className="font-bold text-gray-700 text-sm">Facebook</span>
-            </a>
-          </div>
-        </div>
-      </section>
 
       {/* FOOTER */}
       <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-10 sm:py-16 mt-6 sm:mt-10">
@@ -669,14 +645,14 @@ export default function Home() {
 
       <button
         onClick={handleViewStoresClick}
-        className="fixed bottom-20 sm:bottom-24 md:bottom-28 right-4 sm:right-6 z-50 bg-white/90 hover:bg-white rounded-full p-2 sm:p-2.5 shadow-2xl ring-4 ring-white/50 transform hover:scale-110 transition-all animate-bounce"
+        className="fixed bottom-24 sm:bottom-28 right-5 z-40 bg-white rounded-full p-1 shadow-2xl ring-2 ring-gray-100 transform hover:scale-110 transition-all animate-bounce"
         aria-label="Ir a ubicación"
         type="button"
       >
         <img
           src="/images/logo.png"
           alt="Logo"
-          className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full object-cover"
+          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover"
           loading="lazy"
         />
       </button>
@@ -684,11 +660,11 @@ export default function Home() {
       {/* Floating WhatsApp Button */}
       <button
         onClick={handleWhatsAppClick}
-        className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-0 w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center shadow-2xl transform hover:scale-110 transition-all z-50 overflow-hidden animate-bounce"
+        className="fixed bottom-5 right-5 bg-green-500 hover:bg-green-600 text-white rounded-full p-0 w-16 h-16 flex items-center justify-center shadow-2xl transform hover:scale-110 transition-all z-50 overflow-hidden animate-bounce"
         aria-label="Contactar por WhatsApp"
         type="button"
       >
-        <MessageCircle className="w-9 h-9 sm:w-11 sm:h-11 fill-current" />
+        <MessageCircle className="w-8 h-8 sm:w-10 sm:h-10 fill-current" />
       </button>
     </div>
   )
