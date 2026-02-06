@@ -1,36 +1,96 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <title>Mundo de Todo Sport - Artículos Deportivos en Montería</title>
+  <title>Almacén Mundo De Todo Sport - Tu Tienda de Confianza en Montería</title>
   <meta name="description"
-    content="Mundo de Todo Sport - Tu tienda de confianza en Montería. Encuentra todo lo que necesitas a los mejores precios. Ubicados en La Granja. ¡Visítanos!" />
+    content="Almacén Mundo De Todo Sport en Montería. Encuentra ropa, calzado y variedad de productos a los mejores precios. Ubicados en La Granja. ¡Visítanos y sorpréndete!" />
   <meta name="keywords"
-    content="Mundo de Todo Sport, Montería, Córdoba, tienda, artículos deportivos, La Granja, compras" />
+    content="Almacén Mundo De Todo Sport, Montería, Córdoba, tienda de ropa, calzado, variedades, La Granja, compras Montería, mejores precios" />
+  <meta name="author" content="Almacén Mundo De Todo Sport" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://mundodetodosport.vercel.app/" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Mundo de Todo Sport - Montería" />
+  <meta property="og:url" content="https://mundodetodosport.vercel.app/" />
+  <meta property="og:title" content="Almacén Mundo De Todo Sport - Montería" />
   <meta property="og:description"
-    content="Tu tienda de confianza en Montería. Encuentra todo lo que necesitas a los mejores precios." />
-  <meta property="og:image" content="/images/logo.png" />
+    content="Encuentra ropa, calzado y mucho más a los mejores precios en Montería. ¡Visitamos en nuestra sede de La Granja!" />
+  <meta property="og:image" content="/preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="es_CO" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Mundo de Todo Sport - Montería" />
-  <meta name="twitter:description"
-    content="Tu tienda de confianza en Montería. Encuentra todo lo que necesitas a los mejores precios." />
+  <meta name="twitter:url" content="https://mundodetodosport.vercel.app/" />
+  <meta name="twitter:title" content="Almacén Mundo De Todo Sport - Montería" />
+  <meta name="twitter:description" content="Encuentra ropa, calzado y mucho más a los mejores precios en Montería." />
+  <meta name="twitter:image" content="/preview.png" />
+
+  <!-- Local SEO & Geo Tags -->
+  <meta name="geo.region" content="CO-COR" />
+  <meta name="geo.placename" content="Montería" />
+  <meta name="geo.position" content="8.736656;-75.911629" />
+  <meta name="ICBM" content="8.736656, -75.911629" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/images/logo.png" />
+  <meta name="theme-color" content="#dc2626" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
+
+  <!-- Structured Data (JSON-LD) - Advanced SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Almacén Mundo De Todo Sport",
+      "image": "https://mundodetodosport.vercel.app/preview.png",
+      "@id": "https://mundodetodosport.vercel.app/",
+      "url": "https://mundodetodosport.vercel.app/",
+      "telephone": "+573122868911",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Transv. 5 Diag 9 y 10, La Granja",
+        "addressLocality": "Montería",
+        "addressRegion": "COR",
+        "postalCode": "230002",
+        "addressCountry": "CO"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 8.736656,
+        "longitude": -75.911629
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "21:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/mundodetodosport/",
+        "https://www.instagram.com/mundodetodosport/",
+        "https://www.tiktok.com/@mundodetodo.sport"
+      ]
+    }
+  </script>
 
   <!-- Facebook Pixel Code -->
   <script>
@@ -45,20 +105,17 @@
       s.parentNode.insertBefore(t, s)
     }(window, document, 'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'TU_PIXEL_ID'); // IMPORTANTE: Reemplaza TU_PIXEL_ID con tu ID real del pixel
-    // NO incluir fbq('track', 'PageView'); aquí - se maneja con scroll en React
+    fbq('init', 'TU_PIXEL_ID'); // Reemplazar con ID real
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=TU_PIXEL_ID&ev=PageView&noscript=1" />
   </noscript>
-  <!-- End Facebook Pixel Code -->
 </head>
 
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
-  <script defer src="%VITE_ANALYTICS_ENDPOINT%/umami" data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
 </body>
 
 </html>
