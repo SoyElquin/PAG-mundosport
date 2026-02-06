@@ -232,7 +232,6 @@ export default function Home() {
 
     const handleMouseLeave = (e: MouseEvent) => {
       // Si el mouse sale por arriba de la página (intento de cerrar pestaña/ir a URL)
-      // Eliminamos hasScrolledRef para que se dispare siempre que intente salir
       if (e.clientY <= 0 && !showFloatingCoupon) {
         setShowExitPopup(true)
         trackFbEvent("ExitIntent", { content_name: "exit_popup_shown" })
@@ -243,6 +242,7 @@ export default function Home() {
     const handleBeforeUnload = (e: BeforeUnloadEvent) => {
       if (!exitPopupDismissed) {
         e.preventDefault()
+        // Many browsers ignore the custom message; presence of returnValue is what matters
         e.returnValue = '' // Requerido por Chrome
         setShowExitPopup(true)
         trackFbEvent("ExitIntent", { content_name: "exit_popup_beforeunload" })
@@ -250,14 +250,53 @@ export default function Home() {
       }
     }
 
+    // Visibility change: on some mobile browsers beforeunload is unreliable
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden' && !exitPopupDismissed && !showFloatingCoupon) {
+        setShowExitPopup(true)
+        trackFbEvent("ExitIntent", { content_name: "exit_popup_visibility_hidden" })
+      }
+    }
+
+    // pagehide fires on some navigations (mobile browsers)
+    const handlePageHide = (e: PageTransitionEvent) => {
+      if (!exitPopupDismissed && !showFloatingCoupon) {
+        setShowExitPopup(true)
+        trackFbEvent("ExitIntent", { content_name: "exit_popup_pagehide" })
+      }
+    }
+
+    // Handle back button: push a history state and intercept popstate to show popup
+    const handlePopState = (e: PopStateEvent) => {
+      if (!exitPopupDismissed && !showFloatingCoupon) {
+        setShowExitPopup(true)
+        trackFbEvent("ExitIntent", { content_name: "exit_popup_popstate" })
+        // Re-push state to keep user on page (soft trap). This is respectful only when showing an offer.
+        history.pushState(null, document.title, location.href)
+      }
+    }
+
+    // prime history to intercept back on mobile
+    try {
+      history.pushState(null, document.title, location.href)
+    } catch (e) {
+      // ignore
+    }
+
     document.addEventListener('mousemove', handleMouseMove)
     document.addEventListener('mouseleave', handleMouseLeave)
     window.addEventListener('beforeunload', handleBeforeUnload)
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    window.addEventListener('pagehide', handlePageHide as EventListener)
+    window.addEventListener('popstate', handlePopState)
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove)
       document.removeEventListener('mouseleave', handleMouseLeave)
       window.removeEventListener('beforeunload', handleBeforeUnload)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+      window.removeEventListener('pagehide', handlePageHide as EventListener)
+      window.removeEventListener('popstate', handlePopState)
     }
   }, [exitPopupDismissed, showFloatingCoupon, couponDismissed])
 

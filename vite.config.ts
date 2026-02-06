@@ -1,12 +1,27 @@
 import { jsxLocPlugin } from "@builder.io/vite-plugin-jsx-loc";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
+// Visualizer (optional): install with `pnpm add -D rollup-plugin-visualizer`
+let visualizer: any = null;
+try {
+  // dynamically require so builds don't fail when not installed
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  visualizer = require('rollup-plugin-visualizer');
+} catch (e) {
+  visualizer = null;
+}
 import fs from "node:fs";
 import path from "path";
 import { defineConfig } from "vite";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime()];
+if (visualizer) {
+  // push visualizer only when installed and when RUN_BUNDLE_ANALYZER is set
+  if (process.env.RUN_BUNDLE_ANALYZER === '1') {
+    plugins.push(visualizer({ filename: './bundle-report.html', open: false }));
+  }
+}
 
 export default defineConfig({
   plugins,
