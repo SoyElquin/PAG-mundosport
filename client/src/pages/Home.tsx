@@ -306,12 +306,16 @@ export default function Home() {
         <div className="relative container mx-auto px-3 sm:px-4 py-8 sm:py-12 md:py-20 text-center space-y-4 sm:space-y-6 md:space-y-8">
           <div className="transform hover:scale-105 transition-transform duration-300">
             <div className="inline-block bg-white px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-4 rounded-2xl sm:rounded-3xl shadow-2xl mb-3 sm:mb-4">
-              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-red-700 via-orange-600 to-red-700 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-black bg-gradient-to-r from-red-700 via-orange-600 to-red-700 bg-clip-text text-transparent leading-tight">
                 MUNDO DE TODO SPORT
               </h1>
             </div>
 
-
+            <div className="mt-4 sm:mt-6">
+              <p className="text-xl sm:text-2xl md:text-4xl font-black text-white drop-shadow-lg animate-pulse">
+                🎒 TEMPORADA ESCOLAR 2026 🎒
+              </p>
+            </div>
           </div>
 
 
@@ -365,7 +369,7 @@ export default function Home() {
 
             <button
               onClick={handleViewStoresClick}
-              className="group relative w-full sm:w-auto justify-center bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-5 sm:px-6 md:px-10 py-3 sm:py-3.5 md:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              className="group relative w-full sm:w-auto justify-center bg-gradient-to-r from-orange-400 to-red-600 hover:from-orange-500 hover:to-red-700 text-white px-5 sm:px-6 md:px-10 py-3 sm:py-3.5 md:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
               type="button"
             >
               <div className="absolute inset-0 bg-white/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
