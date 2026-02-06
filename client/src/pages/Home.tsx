@@ -442,8 +442,8 @@ export default function Home() {
       </header>
 
       {/* HERO SECTION */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-700 via-orange-600 to-red-700 opacity-95" />
+      <section className="relative overflow-hidden site-hero">
+        <div className="absolute inset-0 bg-gradient-to-r from-red-700 via-orange-600 to-red-700 opacity-95 site-hero-overlay" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
 
         <div className="relative container mx-auto px-3 sm:px-4 py-8 sm:py-12 md:py-20 text-center space-y-4 sm:space-y-6 md:space-y-8">
@@ -826,12 +826,15 @@ export default function Home() {
         aria-label="Ir a ubicación"
         type="button"
       >
-        <img
-          src="/images/logo.png" // Usamos el logo de Mundo de todo sport
-          alt="Logo"
-          className="w-full h-full rounded-full object-cover"
-          loading="lazy"
-        />
+        <picture className="w-full h-full rounded-full overflow-hidden">
+          <source srcSet="/images/logo.webp" type="image/webp" />
+          <img
+            src="/images/logo.png"
+            alt="Logo"
+            className="w-full h-full rounded-full object-cover"
+            loading="lazy"
+          />
+        </picture>
       </button>
 
       {/* Floating WhatsApp Button */}

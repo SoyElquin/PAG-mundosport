@@ -19,7 +19,7 @@
   <meta property="og:title" content="Almacén Mundo De Todo Sport - Montería" />
   <meta property="og:description"
     content="Encuentra ropa, calzado y mucho más a los mejores precios en Montería. ¡Visitamos en nuestra sede de La Granja!" />
-  <meta property="og:image" content="/preview.png" />
+  <meta property="og:image" content="/preview.webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="es_CO" />
@@ -29,7 +29,7 @@
   <meta name="twitter:url" content="https://mundodetodosport.vercel.app/" />
   <meta name="twitter:title" content="Almacén Mundo De Todo Sport - Montería" />
   <meta name="twitter:description" content="Encuentra ropa, calzado y mucho más a los mejores precios en Montería." />
-  <meta name="twitter:image" content="/preview.png" />
+  <meta name="twitter:image" content="/preview.webp" />
 
   <!-- Local SEO & Geo Tags -->
   <meta name="geo.region" content="CO-COR" />
@@ -37,7 +37,9 @@
   <meta name="geo.position" content="8.736656;-75.911629" />
   <meta name="ICBM" content="8.736656, -75.911629" />
 
-  <!-- Favicon -->
+  <!-- Favicon: preload WebP primary + PNG fallback -->
+  <link rel="preload" href="/images/logo.webp" as="image" type="image/webp" />
+  <link rel="icon" type="image/webp" href="/images/logo.webp" />
   <link rel="icon" type="image/png" href="/images/logo.png" />
   <meta name="theme-color" content="#dc2626" />
 
@@ -48,12 +50,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
 
   <!-- Structured Data (JSON-LD) - Advanced SEO -->
+  <!-- Critical CSS for hero (inlined to improve FCP) -->
+  <style id="critical-hero">
+    .site-hero{position:relative;overflow:hidden;background:linear-gradient(90deg,#b91c1c 0%,#fb923c 50%,#b91c1c 100%);color:#fff}
+    .site-hero .site-hero-overlay{position:absolute;inset:0;opacity:.95}
+    .site-hero [class*="container"]{max-width:1280px;margin-left:auto;margin-right:auto;padding:2rem 1rem}
+    .site-hero h1{font-weight:900;font-size:2rem;line-height:1;margin:0;background:linear-gradient(90deg,#b91c1c,#fb923c);-webkit-background-clip:text;color:transparent}
+    .site-hero .hero-card{background:#fff;border-radius:1rem;padding:1rem;display:inline-block;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+    @media(min-width:768px){.site-hero h1{font-size:3rem}}
+  </style>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Almacén Mundo De Todo Sport",
-      "image": "https://mundodetodosport.vercel.app/preview.png",
+      "image": "https://mundodetodosport.vercel.app/preview.webp",
       "@id": "https://mundodetodosport.vercel.app/",
       "url": "https://mundodetodosport.vercel.app/",
       "telephone": "+573122868911",
