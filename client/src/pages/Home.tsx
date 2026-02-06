@@ -437,7 +437,7 @@ export default function Home() {
       <section id="comollegar" className="w-full py-10 sm:py-12 px-3 sm:px-4 bg-gray-50">
         <div className="container mx-auto">
           <h2 className="text-2xl sm:text-3xl font-black text-center text-gray-900 mb-8 sm:mb-12">
-            👉 Ven a Visítarnos 😀
+            😀 Ven a Visítarnos 👈
           </h2>
 
           <div className="grid grid-cols-1 gap-6 sm:gap-8 max-w-3xl mx-auto">
