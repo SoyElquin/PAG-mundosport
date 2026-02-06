@@ -308,364 +308,381 @@ export default function Home() {
             <div className="inline-block bg-white px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-4 rounded-2xl sm:rounded-3xl shadow-2xl mb-3 sm:mb-4">
               <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-red-700 via-orange-600 to-red-700 bg-clip-text text-transparent leading-tight">
                 MUNDO DE TODO SPORT
-              </h1>
-            </div>
-
-          </div>
-
-          {/* Temporada Escolar Badge */}
-          <div className="mb-8">
-            <span className="inline-block py-2 px-6 rounded-full bg-red-100 text-red-700 text-lg sm:text-xl md:text-2xl font-black tracking-wider shadow-sm animate-pulse">
-              🎒 TEMPORADA ESCOLAR 2026 🎒
-            </span>
-          </div>
-
-          {/* Redes Sociales Minimalistas */}
-          {/* Redes Sociales Minimalistas */}
-          <div className="flex justify-center gap-6 sm:gap-8 mb-8">
-            <button
-              onClick={() => {
-                handleSocialClick("instagram");
-                window.open("https://www.instagram.com/mundodetodosport/", "_blank");
-              }}
-              className="group transform hover:scale-110 transition-transform"
-            >
-              <div className="bg-gradient-to-tr from-purple-500 to-pink-500 p-3 rounded-full shadow-lg group-hover:shadow-xl">
-                <img src="/icons/instagram.svg" alt="Instagram" className="w-6 h-6 sm:w-8 sm:h-8 text-white filter invert brightness-0" />
-              </div>
-            </button>
-
-            <button
-              onClick={() => {
-                handleSocialClick("tiktok");
-                window.open("https://www.tiktok.com/@mundodetodo.sport", "_blank");
-              }}
-              className="group transform hover:scale-110 transition-transform"
-            >
-              <div className="bg-black p-3 rounded-full shadow-lg group-hover:shadow-xl">
-                <img src="/icons/tiktok.svg" alt="TikTok" className="w-6 h-6 sm:w-8 sm:h-8 text-white filter invert brightness-0" />
-              </div>
-            </button>
-
-            <button
-              onClick={() => {
-                handleSocialClick("facebook");
-                window.open("https://www.facebook.com/mundodetodosport/", "_blank");
-              }}
-              className="group transform hover:scale-110 transition-transform"
-            >
-              <div className="bg-blue-600 p-3 rounded-full shadow-lg group-hover:shadow-xl">
-                <img src="/icons/facebook.svg" alt="Facebook" className="w-6 h-6 sm:w-8 sm:h-8 text-white filter invert brightness-0" />
-              </div>
-            </button>
-          </div>
-
-
-
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-white/95 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-8 shadow-2xl border-2 sm:border-4 border-white/50">
-              <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-4 sm:mb-5 md:mb-6">
-                <Zap className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-red-600 animate-bounce" />
-                <p className="text-red-700 font-black text-base sm:text-lg md:text-2xl">¡OFERTA TERMINA EN!</p>
-                <Zap className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-red-600 animate-bounce" />
-              </div>
-
-              <div className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4">
-                {[
-                  { label: "Días", value: timeLeft.days },
-                  { label: "Horas", value: timeLeft.hours },
-                  { label: "Min", value: timeLeft.minutes },
-                  { label: "Seg", value: timeLeft.seconds },
-                ].map((item, index) => (
-                  <div key={index} className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-red-600 to-orange-600 rounded-xl sm:rounded-2xl blur opacity-75" />
-                    <div className="relative bg-gradient-to-br from-red-600 to-orange-600 rounded-xl sm:rounded-2xl p-2 sm:p-3 md:p-6 transform hover:scale-105 transition-all duration-300 shadow-xl">
-                      <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-black text-white mb-0.5 sm:mb-1">
-                        {String(item.value).padStart(2, "0")}
-                      </div>
-                      <div className="text-[10px] sm:text-xs md:text-base text-white font-bold opacity-90">
-                        {item.label}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-4 sm:mt-6 text-gray-600 text-xs sm:text-sm font-semibold">
-                ⚡ ¡No dejes pasar esta oportunidad!
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center pt-2 max-w-md sm:max-w-none mx-auto px-2">
-            <button
-              onClick={handleWhatsAppClick}
-              className="group relative w-full sm:w-auto justify-center bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-5 sm:px-6 md:px-10 py-3 sm:py-3.5 md:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
-              type="button"
-            >
-              <div className="absolute inset-0 bg-white/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-              <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative z-10 flex-shrink-0" />
-              <span className="relative z-10 whitespace-nowrap">Escribir ahora</span>
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform relative z-10 flex-shrink-0" />
-            </button>
-
-            <button
-              onClick={handleViewStoresClick}
-              className="group relative w-full sm:w-auto justify-center bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-5 sm:px-6 md:px-10 py-3 sm:py-3.5 md:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
-              type="button"
-            >
-              <div className="absolute inset-0 bg-white/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-              <MapPin className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative z-10 flex-shrink-0" />
-              <span className="relative z-10 whitespace-nowrap">📍 Ver Ubicación</span>
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform relative z-10 flex-shrink-0" />
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* CUPÓN SECTION */}
-      <section id="cupon-section" className="relative max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-10 sm:py-14 md:py-16">
-        <div className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.2),transparent_70%)]" />
-
-          <div className="relative p-4 sm:p-6 md:p-10">
-            <div className="text-center space-y-4 sm:space-y-6">
-              <div className="flex justify-center">
-                <div className="relative">
-                  <div className="absolute inset-0 animate-ping">
-                    <Gift className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white opacity-75" />
-                  </div>
-                  <Gift className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white relative z-10" />
-                </div>
-              </div>
-
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white drop-shadow-lg">
-                Cupón exclusivo
-              </h2>
-
-              <div className="max-w-2xl mx-auto">
-                <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl transform hover:scale-[1.02] transition-transform">
-                  <p className="text-gray-700 font-bold text-sm sm:text-base md:text-lg mb-3 sm:mb-4">
-                    Menciona este código en caja
+                <div className="max-w-3xl mx-auto">
+                  <p className="text-base sm:text-lg md:text-2xl lg:text-3xl text-red-600 font-bold mb-2 sm:mb-3 drop-shadow-sm">
+                    🎒 TEMPORADA ESCOLAR 2026 🎒
                   </p>
+                </div>
 
-                  <div className="relative mb-4 sm:mb-6">
-                    <div className="absolute inset-0 bg-gradient-to-r from-red-300 to-orange-300 rounded-xl sm:rounded-2xl blur-xl" />
-                    <div className="relative w-full bg-gradient-to-r from-red-100 to-orange-100 border-3 sm:border-4 border-dashed border-red-600 rounded-xl sm:rounded-2xl p-4 sm:p-6">
-                      <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-red-700 to-orange-600 bg-clip-text text-transparent tracking-widest">
-                        {couponCode}
-                      </p>
+
+
+                <div className="max-w-3xl mx-auto">
+                  <div className="bg-white/95 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-8 shadow-2xl border-2 sm:border-4 border-white/50">
+                    <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-4 sm:mb-5 md:mb-6">
+                      <Zap className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-red-600 animate-bounce" />
+                      <p className="text-red-700 font-black text-base sm:text-lg md:text-2xl">¡OFERTA TERMINA EN!</p>
+                      <Zap className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-red-600 animate-bounce" />
                     </div>
-                  </div>
 
-                  <button
-                    onClick={handleCouponRedeemClick}
-                    className="mt-6 w-full bg-green-600 hover:bg-green-700 text-white font-black py-3 px-6 rounded-2xl transform hover:scale-[1.02] transition-all flex items-center justify-center gap-2 mx-auto text-lg shadow-xl"
-                    type="button"
-                  >
-                    <span>Redimir ahora</span>
-                    <ArrowRight className="w-5 h-5" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="comollegar" className="w-full py-10 sm:py-12 px-3 sm:px-4 bg-gray-50">
-        <div className="container mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-black text-center text-gray-900 mb-8 sm:mb-12">
-            😀 Ven a Visítarnos 👈
-          </h2>
-
-          <div className="grid grid-cols-1 gap-6 sm:gap-8 max-w-3xl mx-auto">
-            {/* Sede La Granja */}
-            <div className="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl hover:shadow-3xl transform hover:scale-[1.02] transition-all duration-300">
-              <div className="relative bg-gradient-to-r from-red-700 to-orange-600 p-4 sm:p-6 text-center">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.2),transparent_70%)]" />
-                <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2 mx-auto relative z-10" />
-                <h3 className="text-xl sm:text-2xl font-black text-white relative z-10">Mundo de Todo Sport</h3>
-              </div>
-              <div className="p-4 sm:p-6">
-                <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-gray-100 mb-4 sm:mb-6">
-                  <iframe
-                    title="Mapa Mundo de Todo Sport"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15774.096421085911!2d-75.91162852761718!3d8.736656453826122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e5a3149bdf3320f%3A0x81db1251c71627ab!2sMundo%20de%20Todo%20Sport!5e0!3m2!1ses-419!2sco!4v1770391755052!5m2!1ses-419!2sco"
-                    className="w-full h-64 sm:h-80 border-0"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    allowFullScreen
-                  />
-                </div>
-
-                <div className="space-y-4 sm:space-y-5 mb-4 sm:mb-6">
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="bg-orange-100 p-2 sm:p-3 rounded-lg sm:rounded-xl flex-shrink-0">
-                      <MapPin className="w-5 h-5 sm:w-7 sm:h-7 text-orange-700" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-gray-900 text-base sm:text-lg">La Granja - Transv. 5 Diag 9 y 10</p>
-                      <p className="text-gray-600 font-semibold text-sm sm:text-base">
-                        Al Lado del MiniMarket
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="bg-blue-100 p-2 sm:p-3 rounded-lg sm:rounded-xl flex-shrink-0">
-                      <Clock className="w-5 h-5 sm:w-7 sm:h-7 text-blue-600" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-gray-900 text-sm sm:text-base">Lunes a Domingo</p>
-                      <p className="text-gray-600 text-sm sm:text-base">9:00 AM - 9:00 PM</p>
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={handleMapClick}
-                    className="w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white py-3 sm:py-3.5 md:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-lg flex items-center justify-center gap-2 transition-all shadow-xl transform hover:scale-[1.02]"
-                    type="button"
-                  >
-                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
-                    <span className="whitespace-nowrap">Ver en Google Maps</span>
-                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-
-      {/* FOOTER */}
-      <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-10 sm:py-16 mt-6 sm:mt-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.06),transparent_70%)]" />
-
-        <div className="relative container mx-auto px-3 sm:px-4">
-          <div className="text-center mb-8 sm:mb-10">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
-              MUNDO DE TODO SPORT
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-10">
-            <div className="bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8">
-              <h4 className="text-xl sm:text-2xl font-black mb-4 sm:mb-6">⭐ ¿Por qué elegirnos? ⭐</h4>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-                <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-5">
-                  <div className="bg-gradient-to-br from-red-600 to-orange-600 rounded-xl sm:rounded-2xl p-2.5 sm:p-3 inline-flex">
-                    <ShoppingBag className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
-                  </div>
-                  <p className="mt-3 sm:mt-4 font-black text-sm sm:text-base">Gran variedad</p>
-                  <p className="text-xs sm:text-sm text-gray-300 font-semibold">Artículos deportivos</p>
-                </div>
-
-                <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-5">
-                  <div className="bg-gradient-to-br from-orange-600 to-red-600 rounded-xl sm:rounded-2xl p-2.5 sm:p-3 inline-flex">
-                    <Award className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
-                  </div>
-                  <p className="mt-3 sm:mt-4 font-black text-sm sm:text-base">Calidad garantizada</p>
-                  <p className="text-xs sm:text-sm text-gray-300 font-semibold">Productos de primera</p>
-                </div>
-
-                <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-5">
-                  <div className="bg-gradient-to-br from-red-500 to-orange-500 rounded-xl sm:rounded-2xl p-2.5 sm:p-3 inline-flex">
-                    <Heart className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
-                  </div>
-                  <p className="mt-3 sm:mt-4 font-black text-sm sm:text-base">Atención cercana</p>
-                  <p className="text-xs sm:text-sm text-gray-300 font-semibold">Te atendemos como en casa</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8">
-              <h4 className="text-xl sm:text-2xl font-black mb-3 sm:mb-4">💬 Testimonios</h4>
-              <p className="text-gray-300 font-semibold mb-4 sm:mb-6 text-sm sm:text-base">
-                Lo que dicen nuestros clientes
-              </p>
-
-              <div className="marquee rounded-xl sm:rounded-2xl">
-                <div
-                  className="marqueeTrack"
-                  style={{
-                    ["--marquee-duration" as never]: "12s",
-                  }}
-                >
-                  {testimonialsRibbon.map((t, idx) => (
-                    <div
-                      key={`${t.name}-${idx}`}
-                      className={`${idx === 0 ? "" : "ml-4 sm:ml-6"} flex-shrink-0 w-[240px] sm:w-[280px] md:w-[340px]`}
-                    >
-                      <div className="h-full bg-white/10 border border-white/15 rounded-xl sm:rounded-2xl p-4 sm:p-6">
-                        <div className="flex items-center justify-between gap-2 sm:gap-3 mb-2 sm:mb-3">
-                          <p className="font-black text-white text-sm sm:text-base truncate">{t.name}</p>
-                          <div className="flex items-center gap-0.5 sm:gap-1 text-yellow-300 flex-shrink-0">
-                            {Array.from({ length: t.stars }).map((_, i) => (
-                              <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />
-                            ))}
+                    <div className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+                      {[
+                        { label: "Días", value: timeLeft.days },
+                        { label: "Horas", value: timeLeft.hours },
+                        { label: "Min", value: timeLeft.minutes },
+                        { label: "Seg", value: timeLeft.seconds },
+                      ].map((item, index) => (
+                        <div key={index} className="relative">
+                          <div className="absolute inset-0 bg-gradient-to-br from-red-600 to-orange-600 rounded-xl sm:rounded-2xl blur opacity-75" />
+                          <div className="relative bg-gradient-to-br from-red-600 to-orange-600 rounded-xl sm:rounded-2xl p-2 sm:p-3 md:p-6 transform hover:scale-105 transition-all duration-300 shadow-xl">
+                            <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-black text-white mb-0.5 sm:mb-1">
+                              {String(item.value).padStart(2, "0")}
+                            </div>
+                            <div className="text-[10px] sm:text-xs md:text-base text-white font-bold opacity-90">
+                              {item.label}
+                            </div>
                           </div>
                         </div>
-                        <p className="text-gray-200 font-semibold text-xs sm:text-sm">{t.text}</p>
-                      </div>
+                      ))}
                     </div>
-                  ))}
+
+                    <div className="mt-4 sm:mt-6 text-gray-600 text-xs sm:text-sm font-semibold">
+                      ⚡ ¡No dejes pasar esta oportunidad!
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center pt-2 max-w-md sm:max-w-none mx-auto px-2">
+                  <button
+                    onClick={handleWhatsAppClick}
+                    className="group relative w-full sm:w-auto justify-center bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-5 sm:px-6 md:px-10 py-3 sm:py-3.5 md:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                    type="button"
+                  >
+                    <div className="absolute inset-0 bg-white/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative z-10 flex-shrink-0" />
+                    <span className="relative z-10 whitespace-nowrap">Escribir ahora</span>
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform relative z-10 flex-shrink-0" />
+                  </button>
+
+                  <button
+                    onClick={handleViewStoresClick}
+                    className="group relative w-full sm:w-auto justify-center bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-5 sm:px-6 md:px-10 py-3 sm:py-3.5 md:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                    type="button"
+                  >
+                    <div className="absolute inset-0 bg-white/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative z-10 flex-shrink-0" />
+                    <span className="relative z-10 whitespace-nowrap">📍 Ver Ubicación</span>
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform relative z-10 flex-shrink-0" />
+                  </button>
+                </div>
+            </div>
+          </section>
+
+          {/* CUPÓN SECTION */}
+          <section id="cupon-section" className="relative max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-10 sm:py-14 md:py-16">
+            <div className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.2),transparent_70%)]" />
+
+              <div className="relative p-4 sm:p-6 md:p-10">
+                <div className="text-center space-y-4 sm:space-y-6">
+                  <div className="flex justify-center">
+                    <div className="relative">
+                      <div className="absolute inset-0 animate-ping">
+                        <Gift className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white opacity-75" />
+                      </div>
+                      <Gift className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white relative z-10" />
+                    </div>
+                  </div>
+
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white drop-shadow-lg">
+                    Cupón exclusivo
+                  </h2>
+
+                  <div className="max-w-2xl mx-auto">
+                    <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl transform hover:scale-[1.02] transition-transform">
+                      <p className="text-gray-700 font-bold text-sm sm:text-base md:text-lg mb-3 sm:mb-4">
+                        Menciona este código en caja
+                      </p>
+
+                      <div className="relative mb-4 sm:mb-6">
+                        <div className="absolute inset-0 bg-gradient-to-r from-red-300 to-orange-300 rounded-xl sm:rounded-2xl blur-xl" />
+                        <div className="relative w-full bg-gradient-to-r from-red-100 to-orange-100 border-3 sm:border-4 border-dashed border-red-600 rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                          <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-red-700 to-orange-600 bg-clip-text text-transparent tracking-widest">
+                            {couponCode}
+                          </p>
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={handleCouponRedeemClick}
+                        className="mt-4 sm:mt-6 w-full bg-green-600 hover:bg-green-700 text-white font-black py-2.5 sm:py-3 px-4 sm:px-6 rounded-xl sm:rounded-2xl transform hover:scale-[1.02] transition-all flex items-center justify-center gap-2 mx-auto text-sm sm:text-base md:text-lg shadow-lg"
+                        type="button"
+                      >
+                        <span>Redimir ahora</span>
+                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-10 text-center">
-            <div>
-              <h4 className="font-black text-base sm:text-lg mb-2 sm:mb-3">📍 Ubicación</h4>
-              <p className="text-gray-300 text-xs sm:text-sm mb-1 sm:mb-2">La Granja - Transv. 5 Diag 9 y 10</p>
-              <p className="text-gray-300 text-xs sm:text-sm">Al Lado del MiniMarket</p>
+          <section id="comollegar" className="w-full py-10 sm:py-12 px-3 sm:px-4 bg-gray-50">
+            <div className="container mx-auto">
+              <h2 className="text-2xl sm:text-3xl font-black text-center text-gray-900 mb-8 sm:mb-12">
+                😀 Ven a Visítarnos 👈
+              </h2>
+
+              <div className="grid grid-cols-1 gap-6 sm:gap-8 max-w-3xl mx-auto">
+                {/* Sede La Granja */}
+                <div className="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl hover:shadow-3xl transform hover:scale-[1.02] transition-all duration-300">
+                  <div className="relative bg-gradient-to-r from-red-700 to-orange-600 p-4 sm:p-6 text-center">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.2),transparent_70%)]" />
+                    <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2 mx-auto relative z-10" />
+                    <h3 className="text-xl sm:text-2xl font-black text-white relative z-10">Mundo de Todo Sport</h3>
+                  </div>
+                  <div className="p-4 sm:p-6">
+                    <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-gray-100 mb-4 sm:mb-6">
+                      <iframe
+                        title="Mapa Mundo de Todo Sport"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15774.096421085911!2d-75.91162852761718!3d8.736656453826122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e5a3149bdf3320f%3A0x81db1251c71627ab!2sMundo%20de%20Todo%20Sport!5e0!3m2!1ses-419!2sco!4v1770391755052!5m2!1ses-419!2sco"
+                        className="w-full h-64 sm:h-80 border-0"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        allowFullScreen
+                      />
+                    </div>
+
+                    <div className="space-y-4 sm:space-y-5 mb-4 sm:mb-6">
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <div className="bg-orange-100 p-2 sm:p-3 rounded-lg sm:rounded-xl flex-shrink-0">
+                          <MapPin className="w-5 h-5 sm:w-7 sm:h-7 text-orange-700" />
+                        </div>
+                        <div>
+                          <p className="font-bold text-gray-900 text-base sm:text-lg">La Granja - Transv. 5 Diag 9 y 10</p>
+                          <p className="text-gray-600 font-semibold text-sm sm:text-base">
+                            Al Lado del MiniMarket
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-3 sm:gap-4">
+                        <div className="bg-blue-100 p-2 sm:p-3 rounded-lg sm:rounded-xl flex-shrink-0">
+                          <Clock className="w-5 h-5 sm:w-7 sm:h-7 text-blue-600" />
+                        </div>
+                        <div>
+                          <p className="font-bold text-gray-900 text-sm sm:text-base">Lunes a Domingo</p>
+                          <p className="text-gray-600 text-sm sm:text-base">9:00 AM - 9:00 PM</p>
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={handleMapClick}
+                        className="w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white py-3 sm:py-3.5 md:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-lg flex items-center justify-center gap-2 transition-all shadow-xl transform hover:scale-[1.02]"
+                        type="button"
+                      >
+                        <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
+                        <span className="whitespace-nowrap">Ver en Google Maps</span>
+                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </section>
 
-            <div>
-              <h4 className="font-black text-base sm:text-lg mb-2 sm:mb-3">⏰ Horario</h4>
-              <p className="text-gray-300 text-xs sm:text-sm">Lunes - Domingo</p>
-              <p className="text-gray-200 text-xs sm:text-sm font-black">9:00 AM - 9:00 PM</p>
+          <section className="w-full py-8 sm:py-12 bg-white">
+            <div className="container mx-auto max-w-5xl px-4">
+              <div className="bg-gradient-to-r from-red-900 to-red-800 rounded-[2rem] shadow-2xl shadow-red-900/20 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-red-700/50">
+                <div className="text-center md:text-left space-y-1">
+                  <h2 className="text-2xl sm:text-3xl font-black text-white">
+                    ¡Únete a nuestra comunidad! 🚀
+                  </h2>
+                  <p className="text-red-100 font-medium">
+                    Síguenos y no te pierdas ninguna oferta
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3 sm:gap-4">
+                  {/* Instagram */}
+                  <a
+                    href="https://www.instagram.com/mundodetodosport/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => handleSocialClick("instagram")}
+                    className="group flex flex-col items-center gap-1"
+                  >
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-tr from-purple-500 via-pink-500 to-orange-500 p-[2px] rounded-full hover:scale-110 transition-transform shadow-md">
+                      <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
+                        <img src="/icons/instagram.svg" alt="Instagram" className="w-6 h-6 sm:w-7 sm:h-7" />
+                      </div>
+                    </div>
+                    <span className="text-[10px] sm:text-xs font-bold text-red-200 group-hover:text-pink-400 transition-colors">Instagram</span>
+                  </a>
+
+                  {/* TikTok */}
+                  <a
+                    href="https://www.tiktok.com/@mundodetodo.sport"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => handleSocialClick("tiktok")}
+                    className="group flex flex-col items-center gap-1"
+                  >
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white p-[2px] rounded-full hover:scale-110 transition-transform shadow-md">
+                      <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
+                        <img src="/icons/tiktok.svg" alt="TikTok" className="w-6 h-6 sm:w-7 sm:h-7" />
+                      </div>
+                    </div>
+                    <span className="text-[10px] sm:text-xs font-bold text-red-200 group-hover:text-white transition-colors">TikTok</span>
+                  </a>
+
+                  {/* Facebook */}
+                  <a
+                    href="https://www.facebook.com/mundodetodosport/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => handleSocialClick("facebook")}
+                    className="group flex flex-col items-center gap-1"
+                  >
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-600 p-[2px] rounded-full hover:scale-110 transition-transform shadow-md">
+                      <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
+                        <img src="/icons/facebook.svg" alt="Facebook" className="w-6 h-6 sm:w-7 sm:h-7" />
+                      </div>
+                    </div>
+                    <span className="text-[10px] sm:text-xs font-bold text-red-200 group-hover:text-blue-400 transition-colors">Facebook</span>
+                  </a>
+                </div>
+              </div>
             </div>
+          </section>
 
-            <div>
-              <h4 className="font-black text-base sm:text-lg mb-2 sm:mb-3">💬 Contacto</h4>
-              <p className="text-gray-300 text-xs sm:text-sm">WhatsApp: +57 312 286 8911</p>
-              <p className="text-gray-300 text-xs sm:text-sm">Montería, Córdoba</p>
+          {/* FOOTER */}
+          <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-10 sm:py-16 mt-6 sm:mt-10">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.06),transparent_70%)]" />
+
+            <div className="relative container mx-auto px-3 sm:px-4">
+              <div className="text-center mb-8 sm:mb-10">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
+                  MUNDO DE TODO SPORT
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-10">
+                <div className="bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8">
+                  <h4 className="text-xl sm:text-2xl font-black mb-4 sm:mb-6">⭐ ¿Por qué elegirnos? ⭐</h4>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+                    <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-5">
+                      <div className="bg-gradient-to-br from-red-600 to-orange-600 rounded-xl sm:rounded-2xl p-2.5 sm:p-3 inline-flex">
+                        <ShoppingBag className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
+                      </div>
+                      <p className="mt-3 sm:mt-4 font-black text-sm sm:text-base">Gran variedad</p>
+                      <p className="text-xs sm:text-sm text-gray-300 font-semibold">Artículos deportivos</p>
+                    </div>
+
+                    <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-5">
+                      <div className="bg-gradient-to-br from-orange-600 to-red-600 rounded-xl sm:rounded-2xl p-2.5 sm:p-3 inline-flex">
+                        <Award className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
+                      </div>
+                      <p className="mt-3 sm:mt-4 font-black text-sm sm:text-base">Calidad garantizada</p>
+                      <p className="text-xs sm:text-sm text-gray-300 font-semibold">Productos de primera</p>
+                    </div>
+
+                    <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-5">
+                      <div className="bg-gradient-to-br from-red-500 to-orange-500 rounded-xl sm:rounded-2xl p-2.5 sm:p-3 inline-flex">
+                        <Heart className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
+                      </div>
+                      <p className="mt-3 sm:mt-4 font-black text-sm sm:text-base">Atención cercana</p>
+                      <p className="text-xs sm:text-sm text-gray-300 font-semibold">Te atendemos como en casa</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8">
+                  <h4 className="text-xl sm:text-2xl font-black mb-3 sm:mb-4">💬 Testimonios</h4>
+                  <p className="text-gray-300 font-semibold mb-4 sm:mb-6 text-sm sm:text-base">
+                    Lo que dicen nuestros clientes
+                  </p>
+
+                  <div className="marquee rounded-xl sm:rounded-2xl">
+                    <div
+                      className="marqueeTrack"
+                      style={{
+                        ["--marquee-duration" as never]: "12s",
+                      }}
+                    >
+                      {testimonialsRibbon.map((t, idx) => (
+                        <div
+                          key={`${t.name}-${idx}`}
+                          className={`${idx === 0 ? "" : "ml-4 sm:ml-6"} flex-shrink-0 w-[240px] sm:w-[280px] md:w-[340px]`}
+                        >
+                          <div className="h-full bg-white/10 border border-white/15 rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                            <div className="flex items-center justify-between gap-2 sm:gap-3 mb-2 sm:mb-3">
+                              <p className="font-black text-white text-sm sm:text-base truncate">{t.name}</p>
+                              <div className="flex items-center gap-0.5 sm:gap-1 text-yellow-300 flex-shrink-0">
+                                {Array.from({ length: t.stars }).map((_, i) => (
+                                  <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />
+                                ))}
+                              </div>
+                            </div>
+                            <p className="text-gray-200 font-semibold text-xs sm:text-sm">{t.text}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-10 text-center">
+                <div>
+                  <h4 className="font-black text-base sm:text-lg mb-2 sm:mb-3">📍 Ubicación</h4>
+                  <p className="text-gray-300 text-xs sm:text-sm mb-1 sm:mb-2">La Granja - Transv. 5 Diag 9 y 10</p>
+                  <p className="text-gray-300 text-xs sm:text-sm">Al Lado del MiniMarket</p>
+                </div>
+
+                <div>
+                  <h4 className="font-black text-base sm:text-lg mb-2 sm:mb-3">⏰ Horario</h4>
+                  <p className="text-gray-300 text-xs sm:text-sm">Lunes - Domingo</p>
+                  <p className="text-gray-200 text-xs sm:text-sm font-black">9:00 AM - 9:00 PM</p>
+                </div>
+
+                <div>
+                  <h4 className="font-black text-base sm:text-lg mb-2 sm:mb-3">💬 Contacto</h4>
+                  <p className="text-gray-300 text-xs sm:text-sm">WhatsApp: +57 312 286 8911</p>
+                  <p className="text-gray-300 text-xs sm:text-sm">Montería, Córdoba</p>
+                </div>
+              </div>
+
+              <div className="border-t border-gray-700/70 pt-6 sm:pt-8 text-center text-gray-400">
+                <p className="font-bold text-xs sm:text-sm">© 2026 Mundo de Todo Sport. Todos los derechos reservados.</p>
+              </div>
             </div>
-          </div>
+          </footer>
 
-          <div className="border-t border-gray-700/70 pt-6 sm:pt-8 text-center text-gray-400">
-            <p className="font-bold text-xs sm:text-sm">© 2026 Mundo de Todo Sport. Todos los derechos reservados.</p>
-          </div>
+          <button
+            onClick={handleViewStoresClick}
+            className="fixed bottom-20 sm:bottom-24 md:bottom-28 right-4 sm:right-6 z-50 bg-white/90 hover:bg-white rounded-full p-1 sm:p-1.5 shadow-2xl ring-2 ring-white/80 transform hover:scale-110 transition-all animate-bounce w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center overflow-hidden"
+            aria-label="Ir a ubicación"
+            type="button"
+          >
+            <img
+              src="/images/logo.png"
+              alt="Logo"
+              className="w-full h-full rounded-full object-cover"
+              loading="lazy"
+            />
+          </button>
+
+          {/* Floating WhatsApp Button */}
+          <button
+            onClick={handleWhatsAppClick}
+            className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-0 w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center shadow-2xl transform hover:scale-110 transition-all z-50 overflow-hidden animate-bounce"
+            aria-label="Contactar por WhatsApp"
+            type="button"
+          >
+            <MessageCircle className="w-8 h-8 sm:w-10 sm:h-10 fill-current" />
+          </button>
         </div>
-      </footer>
-
-      <button
-        onClick={handleViewStoresClick}
-        className="fixed bottom-24 sm:bottom-28 right-5 z-40 bg-white rounded-full p-1 shadow-2xl ring-2 ring-gray-100 transform hover:scale-110 transition-all animate-bounce"
-        aria-label="Ir a ubicación"
-        type="button"
-      >
-        <img
-          src="/images/logo.png"
-          alt="Logo"
-          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover"
-          loading="lazy"
-        />
-      </button>
-
-      {/* Floating WhatsApp Button */}
-      <button
-        onClick={handleWhatsAppClick}
-        className="fixed bottom-5 right-5 bg-green-500 hover:bg-green-600 text-white rounded-full p-0 w-16 h-16 flex items-center justify-center shadow-2xl transform hover:scale-110 transition-all z-50 overflow-hidden animate-bounce"
-        aria-label="Contactar por WhatsApp"
-        type="button"
-      >
-        <MessageCircle className="w-8 h-8 sm:w-10 sm:h-10 fill-current" />
-      </button>
-    </div>
-  )
+        )
 }
