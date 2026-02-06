@@ -52,6 +52,8 @@ export default function Home() {
   const [exitPopupDismissed, setExitPopupDismissed] = useState(false)
   const mouseYRef = useRef(0)
   const hasScrolledRef = useRef(false)
+  const userConfirmedExitRef = useRef(false) // Flag para saber si el usuario confirmó salida
+  const dismissCountRef = useRef(0) // Contador de veces que el usuario cierra el popup
   const [loadMap, setLoadMap] = useState(false)
   const comollegarRef = useRef<HTMLElement | null>(null)
 
@@ -224,7 +226,7 @@ export default function Home() {
 
   // Detectar intento de salida del usuario
   useEffect(() => {
-    if (exitPopupDismissed || couponDismissed) return
+    if (couponDismissed) return
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseYRef.current = e.clientY
@@ -239,11 +241,12 @@ export default function Home() {
     }
 
     // Detectar intento de retroceso o recarga (beforeunload)
+    // CRUCIAL: Esto SIEMPRE bloquea en móvil a menos que el usuario confirme salida
     const handleBeforeUnload = (e: BeforeUnloadEvent) => {
-      if (!exitPopupDismissed) {
+      // Solo dejar salir si el usuario explícitamente confirmó
+      if (!userConfirmedExitRef.current) {
         e.preventDefault()
-        // Many browsers ignore the custom message; presence of returnValue is what matters
-        e.returnValue = '' // Requerido por Chrome
+        e.returnValue = '' // Chrome, Edge, Firefox requieren esto
         setShowExitPopup(true)
         trackFbEvent("ExitIntent", { content_name: "exit_popup_beforeunload" })
         return ''
@@ -252,7 +255,7 @@ export default function Home() {
 
     // Visibility change: on some mobile browsers beforeunload is unreliable
     const handleVisibilityChange = () => {
-      if (document.visibilityState === 'hidden' && !exitPopupDismissed && !showFloatingCoupon) {
+      if (document.visibilityState === 'hidden' && !userConfirmedExitRef.current && !showFloatingCoupon) {
         setShowExitPopup(true)
         trackFbEvent("ExitIntent", { content_name: "exit_popup_visibility_hidden" })
       }
@@ -260,7 +263,7 @@ export default function Home() {
 
     // pagehide fires on some navigations (mobile browsers)
     const handlePageHide = (e: PageTransitionEvent) => {
-      if (!exitPopupDismissed && !showFloatingCoupon) {
+      if (!userConfirmedExitRef.current && !showFloatingCoupon) {
         setShowExitPopup(true)
         trackFbEvent("ExitIntent", { content_name: "exit_popup_pagehide" })
       }
@@ -268,7 +271,7 @@ export default function Home() {
 
     // Handle back button: push a history state and intercept popstate to show popup
     const handlePopState = (e: PopStateEvent) => {
-      if (!exitPopupDismissed && !showFloatingCoupon) {
+      if (!userConfirmedExitRef.current && !showFloatingCoupon) {
         setShowExitPopup(true)
         trackFbEvent("ExitIntent", { content_name: "exit_popup_popstate" })
         // Re-push state to keep user on page (soft trap). This is respectful only when showing an offer.
@@ -298,9 +301,14 @@ export default function Home() {
       window.removeEventListener('pagehide', handlePageHide as EventListener)
       window.removeEventListener('popstate', handlePopState)
     }
-  }, [exitPopupDismissed, showFloatingCoupon, couponDismissed])
+  }, [showFloatingCoupon, couponDismissed])
 
   const dismissExitPopup = useCallback(() => {
+    dismissCountRef.current += 1
+    // Si el usuario cierra el popup 2 veces, permitir que salga sin bloqueo
+    if (dismissCountRef.current >= 2) {
+      userConfirmedExitRef.current = true
+    }
     setShowExitPopup(false)
     setExitPopupDismissed(true)
   }, [])
@@ -421,14 +429,22 @@ export default function Home() {
 
             <div className="bg-white rounded-2xl p-6 sm:p-8 text-center">
               {/* Emoji grande */}
-              <div className="text-6xl mb-4 animate-bounce">😱</div>
+              <div className="text-6xl mb-4 animate-bounce">
+                {dismissCountRef.current >= 1 ? '👋' : '😱'}
+              </div>
 
               <h3 className="text-2xl sm:text-3xl font-black text-gray-900 mb-3">
-                ¡ESPERA! ¡No te vayas!
+                {dismissCountRef.current >= 1 ? '¿Seguro que te vas?' : '¡ESPERA! ¡No te vayas!'}
               </h3>
 
               <p className="text-base sm:text-lg text-gray-700 mb-4 font-bold">
-                Tenemos una <span className="text-red-600">OFERTA ESPECIAL</span> solo para ti
+                {dismissCountRef.current >= 1 ? (
+                  'No te cobraremos nada, solo queremos darte una oportunidad más'
+                ) : (
+                  <>
+                    Tenemos una <span className="text-red-600">OFERTA ESPECIAL</span> solo para ti
+                  </>
+                )}
               </p>
 
               {/* Código del cupón */}
@@ -457,7 +473,7 @@ export default function Home() {
                   type="button"
                 >
                   <Gift className="w-5 h-5" />
-                  <span>¡SÍ! Quiero mi descuento</span>
+                  <span>{dismissCountRef.current >= 1 ? '¡Está bien, quiero mi descuento!' : '¡SÍ! Quiero mi descuento'}</span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
 
@@ -466,7 +482,7 @@ export default function Home() {
                   className="w-full text-gray-500 hover:text-gray-700 font-semibold py-2 text-sm transition-colors"
                   type="button"
                 >
-                  No gracias, prefiero pagar precio completo
+                  {dismissCountRef.current >= 1 ? 'Ok, déjame irme' : 'No gracias, prefiero pagar precio completo'}
                 </button>
               </div>
             </div>
